@@ -3,4 +3,5 @@
   border: 0px solid transparent;
   border-radius: 15px;
   overflow: hidden;
+  @include box-shadow(0 0 2px $madison);
 }

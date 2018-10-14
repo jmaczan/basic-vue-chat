@@ -3,13 +3,14 @@
 
     &__container {
       @include flex(row, space-between);
-      background-color: $input-background-color;
+      background-color: $secondary;
 
       .input {
         &__field {
           @include just-flex;
           flex-grow: 9999;
           padding: 5px 10px;
+          background-color: $input-background-color;
 
           input {
             border: none;

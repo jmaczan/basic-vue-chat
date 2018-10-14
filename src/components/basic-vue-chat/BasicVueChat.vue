@@ -2,26 +2,28 @@
   <div class="basic-vue-chat">
     <section class="window">
       <header class="window__header__container">
-        Team Maczan
+        {{ title }}
       </header>
       <section class="window__messages__container">
-        <div class="message--foreign">
-          <div class="message__author">
-            {{ feed[0].author }}
+        <div v-bind:key="messageKey(message)" v-for="message in feed">
+          <div v-if="message.id === mockData.authorId" class="message--own">
+            <div class="message__date">
+              {{ message.date }}
+            </div>
+            <div class="message__contents">
+              {{ message.contents }}
+            </div>
           </div>
-          <div class="message__contents">
-            {{ feed[0].contents }}
-          </div>
-          <div class="message__date">
-            {{ feed[0].date }}
-          </div>
-        </div>
-        <div class="message--own">
-          <div class="message__date">
-            {{ feed[1].date }}
-          </div>
-          <div class="message__contents">
-            {{ feed[1].contents }}
+          <div v-else class="message--foreign">
+            <div class="message__author">
+              {{ message.author }}
+            </div>
+            <div class="message__contents">
+              {{ message.contents }}
+            </div>
+            <div class="message__date">
+              {{ message.date }}
+            </div>
           </div>
         </div>
       </section>
@@ -44,7 +46,19 @@
 <script>
 export default {
   name: 'BasicVueChat',
+  data: function () {
+    return {
+      mockData: {
+        authorId: 1
+      }
+    }
+  },
   props: {
+    title: {
+      type: String,
+      default: 'Team Maczan',
+      required: false
+    },
     feed: {
       type: Array,
       default: function () {
@@ -70,6 +84,11 @@ export default {
         ]
       },
       required: false
+    }
+  },
+  methods: {
+    messageKey (message) {
+      return message.contents + message.date;
     }
   }
 }

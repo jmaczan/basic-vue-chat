@@ -8,3 +8,10 @@
   flex-direction: $direction;
   justify-content: $justify-content;
 }
+
+@mixin box-shadow($values...) {
+  @each $val in $values {
+    -webkit-box-shadow: #{$val};
+    box-shadow: #{$val};  
+  }
+}

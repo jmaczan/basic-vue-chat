@@ -35,12 +35,12 @@
   },
   "lint-staged": {
     "*.js": [
-      "vue-cli-service fix",
-      "git add"
+      "vue-cli-service lint --fix",
+      "git add -u"
     ],
     "*.vue": [
-      "vue-cli-service fix",
-      "git add"
+      "vue-cli-service lint --fix",
+      "git add -u"
     ]
   }
 }
