@@ -27,7 +27,11 @@
       </section>
       <div class="window__input__container">
         <div class="input__field">
-          <input type="text" name="message" aria-placeholder="Type message..." placeholder="Type message..."><br>
+          <input
+            type="text"
+            name="message"
+            aria-placeholder="Type message..."
+            placeholder="Type message..."><br>
         </div>
         <div class="input__button">
           Send

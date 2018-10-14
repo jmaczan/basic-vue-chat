@@ -9,12 +9,11 @@ import BasicVueChat from '@/components/basic-vue-chat/BasicVueChat.vue'
 
 export default {
   name: 'App',
-  components: { 
+  components: {
     BasicVueChat
   }
 }
 </script>
-
 
 <style lang="scss">
 </style>
