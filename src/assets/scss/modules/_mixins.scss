@@ -1,0 +1,10 @@
+@mixin just-flex {
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin flex($direction: column, $justify-content: center) {
+  @include just-flex;
+  flex-direction: $direction;
+  justify-content: $justify-content;
+}

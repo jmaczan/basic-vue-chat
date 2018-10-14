@@ -6,6 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "fix": "vue-cli-service lint --fix",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e"
   },
@@ -21,7 +22,7 @@
     "@vue/cli-plugin-eslint": "^3.0.0-rc.12",
     "@vue/cli-plugin-unit-mocha": "^3.0.0-rc.12",
     "@vue/cli-service": "^3.0.0-rc.12",
-    "@vue/eslint-config-airbnb": "^3.0.5",
+    "@vue/eslint-config-standard": "^3.0.5",
     "@vue/test-utils": "^1.0.0-beta.20",
     "chai": "^4.1.2",
     "lint-staged": "^7.2.2",
@@ -34,11 +35,11 @@
   },
   "lint-staged": {
     "*.js": [
-      "vue-cli-service lint",
+      "vue-cli-service fix",
       "git add"
     ],
     "*.vue": [
-      "vue-cli-service lint",
+      "vue-cli-service fix",
       "git add"
     ]
   }

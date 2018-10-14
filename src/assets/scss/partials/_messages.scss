@@ -1,0 +1,9 @@
+.window {
+  &__messages {
+
+    &__container {
+      border-left: 1px solid $alice-blue;
+      border-right: 1px solid $alice-blue
+    }
+  }
+}
