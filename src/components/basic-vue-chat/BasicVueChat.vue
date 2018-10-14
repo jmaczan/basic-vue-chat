@@ -5,8 +5,12 @@
         {{ title }}
       </header>
       <section class="window__messages__container">
-        <div v-bind:key="messageKey(message)" v-for="message in feed">
-          <div v-if="message.id === mockData.authorId" class="message--own">
+        <div
+          v-for="message in feed"
+          :key="messageKey(message)">
+          <div
+            v-if="message.id === mockData.authorId"
+            class="message--own">
             <div class="message__date">
               {{ message.date }}
             </div>
@@ -14,7 +18,9 @@
               {{ message.contents }}
             </div>
           </div>
-          <div v-else class="message--foreign">
+          <div
+            v-else
+            class="message--foreign">
             <div class="message__author">
               {{ message.author }}
             </div>
@@ -46,13 +52,6 @@
 <script>
 export default {
   name: 'BasicVueChat',
-  data: function () {
-    return {
-      mockData: {
-        authorId: 1
-      }
-    }
-  },
   props: {
     title: {
       type: String,
@@ -86,9 +85,16 @@ export default {
       required: false
     }
   },
+  data: function () {
+    return {
+      mockData: {
+        authorId: 1
+      }
+    }
+  },
   methods: {
     messageKey (message) {
-      return message.contents + message.date;
+      return message.contents + message.date
     }
   }
 }
