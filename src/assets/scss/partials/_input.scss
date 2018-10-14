@@ -2,10 +2,14 @@
   &__input {
 
     &__container {
-      @include flex(row, space-between);
+      position: relative;
+      bottom: 0;
       background-color: $secondary;
 
       .input {
+        &__container {
+          @include flex(row, space-between);
+        }
         &__field {
           @include just-flex;
           flex-grow: 9999;
