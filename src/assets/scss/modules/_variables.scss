@@ -1,3 +1,5 @@
+@import "defaults";
+
 $primary: $slate-blue !default;
 $secondary: $lavender !default;
 
@@ -5,12 +7,16 @@ $header-color: $ghost-white !default;
 
 $input-background-color: $alice-blue !default;
 
-$base-font-family: $source-sans-pro-font !default;
-$base-font-weight: $regular !default;
-$base-font-size: 14px !default;
+$font-family: $base-font-family;
+$font-weight: $base-font-weight;
+$font-size: $base-font-size;
 
 $dark-text-color: $madison !default;
 $light-text-color: $ghost-white !default;
 
 $dark-bg: $madison !default;
 $light-bg: $white !default;
+
+$window-width: $base-window-width !default;
+$window-height: $base-window-height !default;
+$message-max-width: $base-message-max-width !default;

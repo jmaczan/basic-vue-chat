@@ -45,10 +45,13 @@
         <div class="input__container">
           <div class="input__field">
             <input
+              v-model="message"
               type="text"
               name="message"
               aria-placeholder="Type message..."
-              placeholder="Type message..."><br>
+              placeholder="Type message..."
+              autofocus
+              @keyup="sendIfEnter"><br>
           </div>
           <div
             class="input__button"
@@ -62,6 +65,8 @@
 </template>
 
 <script>
+import moment from 'moment'
+
 export default {
   name: 'BasicVueChat',
   props: {
@@ -76,6 +81,7 @@ export default {
       mockData: {
         authorId: 1
       },
+      message: '',
       feed: [
         {
           id: 0,
@@ -102,8 +108,20 @@ export default {
     messageKey (message) {
       return message.contents + message.date
     },
+    sendIfEnter (event) {
+      event.preventDefault()
+      if (event.keyCode === 13) {
+        this.add()
+      }
+    },
     add () {
-      this.feed.push({ id: 0, author: 'Gruby', contents: 'xd', date: '16:66' })
+      if (!this.message || this.message === '') {
+        return
+      }
+
+      this.feed.push({ id: 1, author: 'Gruby', contents: this.message, date: moment().format('H:m:s') })
+
+      this.message = ''
 
       setTimeout(function () {
         var scrollContainer = document.getElementById('window__messages__container')
@@ -117,7 +135,7 @@ export default {
 
 <style lang="scss">
 .messages-list-item {
-  transition: all 0.5s;
+  transition: all 0.2s;
 }
 
 .messages-list-enter, .messages-list-leave-to

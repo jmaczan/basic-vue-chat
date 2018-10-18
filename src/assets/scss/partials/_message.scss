@@ -2,6 +2,11 @@
 
   %message {
     padding: 3px 5px;
+    
+    &__contents {
+      max-width: $message-max-width !important;
+      word-wrap: break-word;
+    }
   }
 
   .message {
@@ -43,6 +48,7 @@
 
       .message {
         &__contents {
+          @extend %message__contents;
           @include message__contents(transparent, $ghost-white, $secondary);
         }
 
