@@ -2,62 +2,24 @@
   <div class="basic-vue-chat">
     <section class="window">
       <header class="window__header__container">
-        {{ title }}
+        <slot name="header">
+          {{ title }}
+        </slot>
       </header>
       <section
         id="window__messages__container"
-        class="window__messages__container"
-        style="transition: all 0.5s;">
-        <transition-group
-          name="messages-list"
-          tag="div" >
-          <div
-            v-for="message in feed"
-            :key="messageKey(message)"
-            class="messages-list-item">
-            <div
-              v-if="message.id === mockData.authorId"
-              class="message--own">
-              <div class="message__date">
-                {{ message.date }}
-              </div>
-              <div class="message__contents">
-                {{ message.contents }}
-              </div>
-            </div>
-            <div
-              v-else
-              class="message--foreign">
-              <div class="message__author">
-                {{ message.author }}
-              </div>
-              <div class="message__contents">
-                {{ message.contents }}
-              </div>
-              <div class="message__date">
-                {{ message.date }}
-              </div>
-            </div>
-          </div>
-        </transition-group>
+        class="window__messages__container">
+        <slot>
+          <messages-list
+            :feed="feedOrMock"
+            :author-id="authorIdOrMock" />
+        </slot>
       </section>
       <div class="window__input__container">
         <div class="input__container">
-          <div class="input__field">
-            <input
-              v-model="message"
-              type="text"
-              name="message"
-              aria-placeholder="Type message..."
-              placeholder="Type message..."
-              autofocus
-              @keyup="sendIfEnter"><br>
-          </div>
-          <div
-            class="input__button"
-            @click="add">
-            Send
-          </div>
+          <slot name="input-container">
+            <input-container />
+          </slot>
         </div>
       </div>
     </section>
@@ -65,85 +27,68 @@
 </template>
 
 <script>
-import moment from 'moment'
+import MessagesList from './messages/MessagesList.vue'
+import InputContainer from './input/InputContainer.vue'
 
 export default {
   name: 'BasicVueChat',
+  components: {
+    MessagesList,
+    InputContainer
+  },
   props: {
     title: {
       type: String,
       default: 'Team Maczan',
       required: false
+    },
+    attachMock: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
+    messagesList: {
+      type: Array,
+      default: function () {
+        return []
+      },
+      required: false
+    },
+    authorId: {
+      type: Number,
+      default: -1,
+      required: false
     }
   },
+
   data: function () {
     return {
       mockData: {
-        authorId: 1
+        authorId: -1,
+        feed: []
       },
-      message: '',
-      feed: [
-        {
-          id: 0,
-          author: 'Gruby',
-          contents: 'hi there',
-          date: '16:30'
-        },
-        {
-          id: 1,
-          author: 'Chudy',
-          contents: 'hello',
-          date: '16:30'
-        },
-        {
-          id: 1,
-          author: 'Chudy',
-          contents: 'lol',
-          date: '16:31'
-        }
-      ]
+      message: ''
     }
   },
-  methods: {
-    messageKey (message) {
-      return message.contents + message.date
+  computed: {
+    feedOrMock: function () {
+      return this.messagesList && this.messagesList.length > 0 ? this.messagesList : this.mockData.feed
     },
-    sendIfEnter (event) {
-      event.preventDefault()
-      if (event.keyCode === 13) {
-        this.add()
-      }
-    },
-    add () {
-      if (!this.message || this.message === '') {
-        return
-      }
-
-      this.feed.push({ id: 1, author: 'Gruby', contents: this.message, date: moment().format('H:m:s') })
-
-      this.message = ''
-
-      setTimeout(function () {
-        var scrollContainer = document.getElementById('window__messages__container')
-        var isScrolledToBottom = scrollContainer.scrollHeight - scrollContainer.clientHeight <= scrollContainer.scrollTop + 1
-        if (!isScrolledToBottom) { scrollContainer.scrollTop = scrollContainer.scrollHeight }
-      }, 500)
+    authorIdOrMock: function () {
+      return this.authorId && this.authorId !== -1 ? this.authorId : this.mockData.authorId
+    }
+  },
+  mounted () {
+    if (!this.messagesList || this.messagesList.length === 0) {
+      import('./mocks/mock-messages-list.js').then(mockData => {
+        this.mockData.authorId = mockData.default.authorId
+        this.mockData.feed = mockData.default.feed
+      })
     }
   }
 }
 </script>
 
 <style lang="scss">
-.messages-list-item {
-  transition: all 0.2s;
-}
 
-.messages-list-enter, .messages-list-leave-to
-/* .messages-list-leave-active below version 2.1.8 */ {
-  opacity: 0;
-  transform: translateY(30px);
-}
-.messages-list-leave-active {
-  position: absolute;
-}
 </style>
