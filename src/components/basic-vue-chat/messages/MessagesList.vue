@@ -20,8 +20,9 @@
 </template>
 
 <script>
-import MessageOwn from 'MessageOwn'
-import MessageForeign from 'MessageForeign'
+import { mapState } from 'vuex'
+import MessageOwn from './MessageOwn'
+import MessageForeign from './MessageForeign'
 
 export default {
   name: 'MessagesList',
@@ -29,19 +30,11 @@ export default {
     MessageOwn,
     MessageForeign
   },
-  props: {
-    feed: {
-      type: Array,
-      default: function () {
-        return []
-      },
-      required: false
-    },
-    authorId: {
-      type: Number,
-      default: -1,
-      required: false
-    }
+  computed: {
+    ...mapState({
+      feed: state => state.general.feed,
+      authorId: state => state.general.authorId
+    })
   },
   methods: {
     messageKey (message) {

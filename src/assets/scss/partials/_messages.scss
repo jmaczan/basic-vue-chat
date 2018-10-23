@@ -9,6 +9,24 @@
       border-left: 1px solid $alice-blue;
       border-right: 1px solid $alice-blue;
       transition: all 0.5s;
+      overflow: scroll;
+      overflow-x: hidden;
+
+      &::-webkit-scrollbar {
+        width: 0px;  /* remove scrollbar space */
+        background: transparent;  /* optional: just make scrollbar invisible */
+    }
+  
+        &::-webkit-scrollbar {
+          width: 0;
+      }
+      
+      &::-webkit-scrollbar-track {
+      }
+      
+      &::-webkit-scrollbar-thumb {
+        background-color: transparent;
+      }
     }
   }
 }

@@ -1,18 +1,22 @@
 <template>
-  <section>
+  <div class="input__container">
     <slot name="input-field">
-      <input-field />
+      <input-field
+        v-model="message"
+        @newOwnMessage="onNewOwnMessage" />
     </slot>
     <slot name="input-button">
-      <input-button />
+      <input-button @newOwnMessage="onNewOwnMessage" />
     </slot>
-  </section>
+  </div>
 </template>
 
 <script>
-import moment from 'moment'
-import InputField from 'InputField'
-import InputButton from 'InputButton'
+import InputField from './InputField'
+import InputButton from './InputButton'
+import { mapMutations } from 'vuex'
+import { storeHelpers } from '@/helpers/store.js'
+import { MODULE, SET_NEW_MESSAGE } from '@/store/actions/general.js'
 
 export default {
   name: 'InputContainer',
@@ -20,27 +24,25 @@ export default {
     InputField,
     InputButton
   },
+  data: function () {
+    return {
+      message: ''
+    }
+  },
   methods: {
-    sendIfEnter (event) {
-      event.preventDefault()
-      if (event.keyCode === 13) {
-        this.add()
-      }
-    },
-    add () {
+    ...mapMutations({
+      setNewMessage: storeHelpers.concat(MODULE, SET_NEW_MESSAGE)
+    }),
+    onNewOwnMessage () {
       if (!this.message || this.message === '') {
         return
       }
 
-      this.feed.push({ id: 1, author: 'Person', contents: this.message, date: moment().format('H:m:s') })
+      this.setNewMessage(this.message)
 
       this.message = ''
 
-      setTimeout(function () {
-        var scrollContainer = document.getElementById('window__messages__container')
-        var isScrolledToBottom = scrollContainer.scrollHeight - scrollContainer.clientHeight <= scrollContainer.scrollTop + 1
-        if (!isScrolledToBottom) { scrollContainer.scrollTop = scrollContainer.scrollHeight }
-      }, 500)
+      this.$emit('newOwnMessage')
     }
   }
 }

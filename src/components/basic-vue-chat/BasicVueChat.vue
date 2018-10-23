@@ -10,23 +10,25 @@
         id="window__messages__container"
         class="window__messages__container">
         <slot>
-          <messages-list
-            :feed="feedOrMock"
-            :author-id="authorIdOrMock" />
+          <messages-list />
         </slot>
       </section>
       <div class="window__input__container">
-        <div class="input__container">
-          <slot name="input-container">
-            <input-container />
-          </slot>
-        </div>
+        <slot name="input-container">
+          <input-container @newOwnMessage="onNewOwnMessage" />
+        </slot>
       </div>
+
     </section>
   </div>
 </template>
 
 <script>
+import moment from 'moment'
+import { mapMutations, mapState } from 'vuex'
+import { storeHelpers } from '@/helpers/store.js'
+import { scrollToBottom } from '@/helpers/scroll.js'
+import { MODULE, SET_FEED, PUSH_TO_FEED, SET_AUTHOR_ID, RESET_NEW_MESSAGE } from '@/store/actions/general.js'
 import MessagesList from './messages/MessagesList.vue'
 import InputContainer from './input/InputContainer.vue'
 
@@ -47,45 +49,76 @@ export default {
       default: false,
       required: false
     },
-    messagesList: {
+    initialFeed: {
       type: Array,
       default: function () {
         return []
       },
       required: false
     },
-    authorId: {
+    initialAuthorId: {
       type: Number,
       default: -1,
       required: false
-    }
-  },
-
-  data: function () {
-    return {
-      mockData: {
-        authorId: -1,
-        feed: []
+    },
+    newMessage: {
+      type: Object,
+      default: function () {
+        return {}
       },
-      message: ''
+      required: false
     }
   },
   computed: {
-    feedOrMock: function () {
-      return this.messagesList && this.messagesList.length > 0 ? this.messagesList : this.mockData.feed
-    },
-    authorIdOrMock: function () {
-      return this.authorId && this.authorId !== -1 ? this.authorId : this.mockData.authorId
+    ...mapState({
+      authorId: state => state.general.authorId,
+      message: state => state.general.message
+    })
+  },
+  watch: {
+    newMessage: function (newValue, oldValue) {
+      this.pushToFeed(newValue)
+
+      scrollToBottom()
     }
   },
   mounted () {
-    if (!this.messagesList || this.messagesList.length === 0) {
+    if (this.attachMock) {
       import('./mocks/mock-messages-list.js').then(mockData => {
-        this.mockData.authorId = mockData.default.authorId
-        this.mockData.feed = mockData.default.feed
+        this.setFeed(mockData.default.feed)
+        this.setAuthorId(mockData.default.authorId)
+      }).catch(error => {
+        console.error('Failed to load mock data from file. ', error)
       })
+    } else {
+      this.setFeed(this.initialFeed)
+      this.setAuthorId(this.initialAuthorId)
+    }
+  },
+  methods: {
+    ...mapMutations({
+      setFeed: storeHelpers.concat(MODULE, SET_FEED),
+      pushToFeed: storeHelpers.concat(MODULE, PUSH_TO_FEED),
+      setAuthorId: storeHelpers.concat(MODULE, SET_AUTHOR_ID),
+      resetNewMessage: storeHelpers.concat(MODULE, RESET_NEW_MESSAGE)
+    }),
+    onNewOwnMessage (message) {
+      const newOwnMessage = {
+        id: this.authorId,
+        contents: this.message,
+        date: moment().format('H:m:s')
+      }
+
+      this.pushToFeed(newOwnMessage)
+
+      scrollToBottom()
+
+      this.$emit('newOwnMessage', newOwnMessage)
+
+      this.resetNewMessage()
     }
   }
+
 }
 </script>
 

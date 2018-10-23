@@ -3,13 +3,13 @@
 
     class="message--foreign">
     <div class="message__author">
-      {{ message.author }}
+      {{ author }}
     </div>
     <div class="message__contents">
-      {{ message.contents }}
+      {{ contents }}
     </div>
     <div class="message__date">
-      {{ message.date }}
+      {{ date }}
     </div>
   </div>
 </template>

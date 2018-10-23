@@ -1,14 +1,20 @@
 <template>
   <div
     class="input__button"
-    @click="add">
+    @click="send">
     Send
   </div>
 </template>
 
 <script>
+
 export default {
-  name: 'InputButton'
+  name: 'InputButton',
+  methods: {
+    send (event) {
+      this.$emit('newOwnMessage')
+    }
+  }
 }
 </script>
 
