@@ -2,21 +2,21 @@
 
 [![Build Status](https://api.travis-ci.com/jmaczan/basic-vue-chat.svg?branch=master)](https://travis-ci.org/jmaczan/basic-vue-chat)
 
-![Screenshot](https://raw.githubusercontent.com/jmaczan/basic-vue-chat/master/preview.png)
+![Screenshot](https://raw.githubusercontent.com/jmaczan/basic-vue-chat/master/preview.png =506x406)
 
 Implementation of Vue-based chat.
 
-### Installation
+## Installation
 
 ```
 npm i
 ```
 
-### Usage
+## Usage
 
 Chat is a single Vue component, which you can find in `/src/components/basic-vue-chat/`. 
 
-#### Pushing messages
+### Pushing messages
 
 To push message to chat, just **pass newMessage prop to BasicVueChat**. Message structure:
 ```javascript
@@ -30,7 +30,7 @@ To push message to chat, just **pass newMessage prop to BasicVueChat**. Message 
 
 You can find example of message pushing in `App.vue` file.
 
-#### Handling messages from user
+### Handling messages from user
 
 When user sends message, **it's automatically added to state - feed in general module in Vuex store** and **event newOwnMessage is emitted**. Event payload structure:
 ```javascript
@@ -59,17 +59,17 @@ npm test
 For demo purposes, there's a `Push message` button, which pushes another person's mock message to chat.
 
 
-#### Mock data
+### Mock data
 
 To attach mock data, just pass logic prop `attachMock` to BasicVueChat.
 
-### Customization
+## Customization
 
-#### Title
+### Title
 
 Pass prop `title` to BasicVueChat component.
 
-#### Initial data
+### Initial data
 
 Pass prop `initialFeed` to BasicVueChat component. Data structure:
 ```javascript
@@ -89,7 +89,7 @@ Pass prop `initialFeed` to BasicVueChat component. Data structure:
 ]
 ```
 
-#### Styling
+### Styling
 
 Chat uses SCSS, so you can easily override variables used in project. You can find them in `/src/assets/scss/modules/_variables.scss`. All variables have default values.
 
@@ -110,7 +110,7 @@ Chat uses SCSS, so you can easily override variables used in project. You can fi
 | Chat window height | $window-height | 400px |
 | Message max width | $message-max-width | 200px |
 
-### Code structure
+## Code structure
 
 1. assets
   - Sass standard CSS code structure
@@ -128,24 +128,24 @@ Chat uses SCSS, so you can easily override variables used in project. You can fi
 5. App.vue - runner file
 6. main.js - project config
 
-### Technologies used
+## Technologies used
 
 1. JavaScript
-  - Vue
-  - Vuex
-  - Moment.js
+  * Vue
+  * Vuex
+  * Moment.js
 2. HTML5
 3. CSS
-  - SCSS
-  - BEM
+  * SCSS
+  * BEM
 4. Tests
-  - Jest
-  - Vue test utils
+  * Jest
+  * Vue test utils
 5. Tooling
-  - npm
+  * npm
 6. Continuous Integration
-  - Travis CI
+  * Travis CI
 7. Linting
-  - ESLint standard config
+  * ESLint standard config
 
 Developed and tested under macOS High Sierra 10.13 and Google Chrome 69.
