@@ -6,6 +6,19 @@
 
 Implementation of Vue-based chat.
 
+- [basic-vue-chat](#basic-vue-chat)
+  * [Installation](#installation)
+  * [Usage](#usage)
+    + [Pushing messages](#pushing-messages)
+    + [Handling messages from user](#handling-messages-from-user)
+    + [Mock data](#mock-data)
+  * [Customization](#customization)
+    + [Title](#title)
+    + [Initial data](#initial-data)
+    + [Styling](#styling)
+  * [Code structure](#code-structure)
+  * [Technologies used](#technologies-used)
+
 ## Installation
 
 ```
