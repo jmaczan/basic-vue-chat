@@ -21,17 +21,30 @@ Implementation of Vue-based chat.
 
 ## Installation
 
+
 ```
+git clone https://github.com/jmaczan/basic-vue-chat.git
+cd basic-vue-chat
 npm i
 ```
 
 ## Usage
 
-Chat is a single Vue component, which you can find in `/src/components/basic-vue-chat/`. 
+Chat is a single Vue component, which you can find in `/src/components/basic-vue-chat/`. To start, just import BasicVueChat component and put the following line into your html code:
+```html
+<basic-vue-chat />
+```
 
 ### Pushing messages
 
-To push message to chat, just **pass newMessage prop to BasicVueChat**. Message structure:
+To push message to chat, just **pass newMessage prop to BasicVueChat**. Example:
+```html
+<basic-vue-chat :new-message="message" />
+```
+
+The `message` object above may be part of `data` in your Vue component in which you will use BasicVueChat.
+
+Example of correct message structure:
 ```javascript
 {
   id: 0,
@@ -45,7 +58,13 @@ You can find example of message pushing in `App.vue` file.
 
 ### Handling messages from user
 
-When user sends message, **it's automatically added to state - feed in general module in Vuex store** and **event newOwnMessage is emitted**. Event payload structure:
+When user sends message, **it's automatically added to state - feed in general module in Vuex store** and **event newOwnMessage is emitted**.  To handle this event, you can for example do this:
+```html
+<basic-vue-chat @newOwnMessage="onNewOwnMessage" />
+```
+where `onNewOwnMessage(message)` is a method in your Vue component in which you will use BasicVueChat.
+
+Example of correct event payload structure:
 ```javascript
 {
   id: 1,
@@ -71,7 +90,6 @@ npm test
 
 For demo purposes, there's a `Push message` button, which pushes another person's mock message to chat.
 
-
 ### Mock data
 
 To attach mock data, just pass logic prop `attachMock` to BasicVueChat.
@@ -81,12 +99,19 @@ To attach mock data, just pass logic prop `attachMock` to BasicVueChat.
 ### Title
 
 Pass prop `title` to BasicVueChat component.
+```html
+<basic-vue-chat :title="'My Best Team'" />
+```
 
 ### Initial data
 
-Pass prop `initialFeed` to BasicVueChat component. Data structure:
+Pass prop `initialFeed` to BasicVueChat component.
+```html
+<basic-vue-chat :initial-feed="feed" />
+```
+Example of correct data structure:
 ```javascript
-[
+const feed = [
   {
     id: 0,
     author: 'Person',
