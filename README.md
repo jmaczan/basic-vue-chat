@@ -1,6 +1,6 @@
 # basic-vue-chat
 
-[![Build Status](https://api.travis-ci.com/jmaczan/basic-vue-chat.svg?branch=master)](https://travis-ci.org/jmaczan/basic-vue-chat)
+[![Build Status](https://api.travis-ci.com/jmaczan/basic-vue-chat.svg?branch=master)](https://travis-ci.com/jmaczan/basic-vue-chat)
 
 <img src="https://raw.githubusercontent.com/jmaczan/basic-vue-chat/master/preview.png" width="506" height="406" class="center">
 
