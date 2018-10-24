@@ -10,7 +10,7 @@
         id="window__messages__container"
         class="window__messages__container">
         <slot>
-          <messages-list />
+          <messages-list class="messages-list" />
         </slot>
       </section>
       <div class="window__input__container">
@@ -18,7 +18,6 @@
           <input-container @newOwnMessage="onNewOwnMessage" />
         </slot>
       </div>
-
     </section>
   </div>
 </template>
@@ -78,7 +77,6 @@ export default {
   watch: {
     newMessage: function (newValue, oldValue) {
       this.pushToFeed(newValue)
-
       scrollToBottom()
     }
   },

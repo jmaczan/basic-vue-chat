@@ -1,6 +1,5 @@
 <template>
   <div
-
     class="message--foreign">
     <div class="message__author">
       {{ author }}

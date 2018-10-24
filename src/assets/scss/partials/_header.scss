@@ -6,6 +6,7 @@
       padding: 10px 5px;
       color: $header-color;
       font-weight: $bold;
+      z-index: 1;
 
       @include box-shadow(0 2px 2px -2px $madison);
     }

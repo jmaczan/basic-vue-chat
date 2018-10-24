@@ -1,7 +1,7 @@
 <template>
   <transition-group
     name="messages-list"
-    tag="div" >
+    tag="div">
     <div
       v-for="message in feed"
       :key="messageKey(message)"
