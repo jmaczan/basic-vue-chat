@@ -2,7 +2,7 @@
 
 [![Build Status](https://api.travis-ci.com/jmaczan/basic-vue-chat.svg?branch=master)](https://travis-ci.org/jmaczan/basic-vue-chat)
 
-<p style="align: center;">
+<p class="center">
   <img src="https://raw.githubusercontent.com/jmaczan/basic-vue-chat/master/preview.png" width="506" height="406">
 </p>
 
