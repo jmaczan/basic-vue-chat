@@ -113,39 +113,40 @@ Chat uses SCSS, so you can easily override variables used in project. You can fi
 ## Code structure
 
 1. assets
-  - Sass standard CSS code structure
-  - Components styles in `partials` directory
-  - Variables and settings in `modules` directory
+    - Sass standard CSS code structure
+    - Components styles in `partials` directory
+    - Variables and settings in `modules` directory
 2. components
-  - chat's components are in subdirectories of `basic-vue-chat` directory
+    - chat's components are in subdirectories of `basic-vue-chat` directory
 3. helpers
-  - reusable helpers for store and scrolling functionalities
+    - reusable helpers for store and scrolling functionalities
 4. store
-  - vuex state management usage
-  - available operations defined in `actions` directory
-  - main module `general` in `modules` directory
-  - module components are in separate files
+    - vuex state management usage
+    - available operations defined in `actions` directory
+    - main module `general` in `modules` directory
+    - module components are in separate files
 5. App.vue - runner file
 6. main.js - project config
+
 
 ## Technologies used
 
 1. JavaScript
-  * Vue
-  * Vuex
-  * Moment.js
+    * Vue
+    * Vuex
+    * Moment.js
 2. HTML5
 3. CSS
-  * SCSS
-  * BEM
+    * SCSS
+    * BEM
 4. Tests
-  * Jest
-  * Vue test utils
+    * Jest
+    * Vue test utils
 5. Tooling
-  * npm
+    * npm
 6. Continuous Integration
-  * Travis CI
+    * Travis CI
 7. Linting
-  * ESLint standard config
+    * ESLint standard config
 
 Developed and tested under macOS High Sierra 10.13 and Google Chrome 69.
