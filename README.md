@@ -2,7 +2,7 @@
 
 [![Build Status](https://api.travis-ci.com/jmaczan/basic-vue-chat.svg?branch=master)](https://travis-ci.org/jmaczan/basic-vue-chat)
 
-![Screenshot](https://raw.githubusercontent.com/jmaczan/basic-vue-chat/master/preview.png =506x406)
+![Screenshot](https://raw.githubusercontent.com/jmaczan/basic-vue-chat/master/preview.png=506x406)
 
 Implementation of Vue-based chat.
 
