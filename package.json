@@ -1,10 +1,11 @@
 {
   "name": "basic-vue-chat",
   "version": "0.1.0",
-  "private": true,
+  "main": "./dist/basic-vue-chat.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build-bundle": "vue-cli-service build --target lib --name basic-vue-chat ./src/components/basic-vue-chat/entry.js",
     "lint": "vue-cli-service lint",
     "fix": "vue-cli-service lint --fix",
     "test": "vue-cli-service test:unit",
@@ -44,5 +45,12 @@
       "vue-cli-service lint --fix",
       "git add -u"
     ]
-  }
+  },
+  "files": [
+    "dist/*",
+    "src/*",
+    "public/*",
+    ".json",
+    ".js"
+  ]
 }
