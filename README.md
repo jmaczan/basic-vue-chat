@@ -1,5 +1,8 @@
 # basic-vue-chat
 
+## Critical npm install bug
+**Currently there are problems with Vuex when installing Chat through npm. I am working on it.**
+
 [![Build Status](https://api.travis-ci.com/jmaczan/basic-vue-chat.svg?branch=master)](https://travis-ci.com/jmaczan/basic-vue-chat)
 
 <img src="https://raw.githubusercontent.com/jmaczan/basic-vue-chat/master/preview.png" width="506" height="406" class="center">
@@ -18,9 +21,6 @@ Implementation of Vue-based chat.
     + [Styling](#styling)
   * [Code structure](#code-structure)
   * [Technologies used](#technologies-used)
-
-## Critical npm install bug
-**Currently there are problems with installing a component through npm. I am working on it.**
 
 ## Installation
 

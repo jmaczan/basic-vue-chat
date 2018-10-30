@@ -12,11 +12,11 @@
 </template>
 
 <script>
-import InputField from './InputField'
-import InputButton from './InputButton'
+import InputField from './InputField.vue'
+import InputButton from './InputButton.vue'
 import { mapMutations } from 'vuex'
-import { storeHelpers } from '@/helpers/store.js'
-import { MODULE, SET_NEW_MESSAGE } from '@/store/actions/general.js'
+import { storeHelpers } from '../../../helpers/store.js'
+import { MODULE, SET_NEW_MESSAGE } from '../../../store/actions/general.js'
 
 export default {
   name: 'InputContainer',

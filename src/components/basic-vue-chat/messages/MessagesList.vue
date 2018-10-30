@@ -21,8 +21,8 @@
 
 <script>
 import { mapState } from 'vuex'
-import MessageOwn from './MessageOwn'
-import MessageForeign from './MessageForeign'
+import MessageOwn from './MessageOwn.vue'
+import MessageForeign from './MessageForeign.vue'
 
 export default {
   name: 'MessagesList',

@@ -25,9 +25,9 @@
 <script>
 import moment from 'moment'
 import { mapMutations, mapState } from 'vuex'
-import { storeHelpers } from '@/helpers/store.js'
-import { scrollToBottom } from '@/helpers/scroll.js'
-import { MODULE, SET_FEED, PUSH_TO_FEED, SET_AUTHOR_ID, RESET_NEW_MESSAGE } from '@/store/actions/general.js'
+import { storeHelpers } from '../../helpers/store.js'
+import { scrollToBottom } from '../../helpers/scroll.js'
+import { MODULE, SET_FEED, PUSH_TO_FEED, SET_AUTHOR_ID, RESET_NEW_MESSAGE } from '../../store/actions/general.js'
 import MessagesList from './messages/MessagesList.vue'
 import InputContainer from './input/InputContainer.vue'
 
@@ -121,5 +121,5 @@ export default {
 </script>
 
 <style lang="scss">
-
+@import "../../assets/scss/main.scss";
 </style>
