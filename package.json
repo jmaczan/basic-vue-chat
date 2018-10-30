@@ -1,6 +1,6 @@
 {
   "name": "basic-vue-chat",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "main": "./dist/basic-vue-chat.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
