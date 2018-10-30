@@ -19,6 +19,9 @@ Implementation of Vue-based chat.
   * [Code structure](#code-structure)
   * [Technologies used](#technologies-used)
 
+## Critical npm install bug
+**Currently there are problems with installing a component through npm. I am working on it.**
+
 ## Installation
 
 

@@ -1,11 +1,11 @@
 {
   "name": "basic-vue-chat",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "./dist/basic-vue-chat.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build-bundle": "vue-cli-service build --target lib --name basic-vue-chat ./src/components/basic-vue-chat/entry.js",
+    "build-bundle": "vue-cli-service build --target lib --name basic-vue-chat ./src/main.js",
     "lint": "vue-cli-service lint",
     "fix": "vue-cli-service lint --fix",
     "test": "vue-cli-service test:unit",
@@ -53,5 +53,22 @@
     "*.vue",
     "*.json",
     "*.js"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmaczan/basic-vue-chat.git"
+  },
+  "keywords": [
+    "vue",
+    "vuejs",
+    "chat",
+    "component",
+    "javascript"
+  ],
+  "author": "Jędrzej Maczan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jmaczan/basic-vue-chat/issues"
+  },
+  "homepage": "https://github.com/jmaczan/basic-vue-chat#readme"
 }
