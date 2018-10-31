@@ -1,6 +1,6 @@
 {
   "name": "basic-vue-chat",
-  "version": "0.1.14",
+  "version": "0.1.17",
   "main": "dist/basic-vue-chat.umd.js",
   "module": "dist/basic-vue-chat.esm.js",
   "unpkg": "dist/basic-vue-chat.min.js",
@@ -14,7 +14,7 @@
     "build:es": "rollup --config build/rollup.config.js --format es --file dist/basic-vue-chat.esm.js",
     "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/basic-vue-chat.min.js",
     "build-legacy": "vue-cli-service build",
-    "build-bundle": "vue-cli-service build --target lib --name basic-vue-chat ./src/components/basic-vue-chat/entry.js",
+    "build-bundle": "vue-cli-service build --target lib --name basic-vue-chat ./src/main.js",
     "lint": "vue-cli-service lint",
     "fix": "vue-cli-service lint --fix",
     "test": "vue-cli-service test:unit",

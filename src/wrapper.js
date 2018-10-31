@@ -1,5 +1,5 @@
 // Import vue component
-import BasicVueChat from './components/basic-vue-chat/BasicVueChat.vue'
+import BasicVueChat from './BasicVueChat.vue'
 
 // Declare install function executed by Vue.use()
 export function install (Vue) {
