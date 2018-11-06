@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import BasicVueChat from './BasicVueChat.vue'
+import App from './App.vue'
 import store from '@/store/index'
 import './assets/scss/main.scss'
 
@@ -9,5 +9,5 @@ Vue.config.productionTip = false
 
 new Vue({
   store,
-  render: h => h(BasicVueChat)
-}).$mount('#basic-vue-chat--wrapper')
+  render: h => h(App)
+}).$mount('#app')

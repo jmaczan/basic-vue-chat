@@ -4,7 +4,7 @@ import buble from 'rollup-plugin-buble' // Transpile/polyfill with reasonable br
 export default {
   input: 'src/wrapper.js', // Path relative to package.json
   output: {
-    name: 'BasicVueComponent',
+    name: 'BasicVueChat',
     exports: 'named'
   },
   plugins: [
