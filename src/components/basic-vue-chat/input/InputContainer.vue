@@ -14,9 +14,6 @@
 <script>
 import InputField from './InputField.vue'
 import InputButton from './InputButton.vue'
-import { mapMutations } from 'vuex'
-import { storeHelpers } from '../../../helpers/store.js'
-import { MODULE, SET_NEW_MESSAGE } from '../../../store/actions/general.js'
 
 export default {
   name: 'InputContainer',
@@ -30,24 +27,15 @@ export default {
     }
   },
   methods: {
-    ...mapMutations({
-      setNewMessage: storeHelpers.concat(MODULE, SET_NEW_MESSAGE)
-    }),
     onNewOwnMessage () {
       if (!this.message || this.message === '') {
         return
       }
 
-      this.setNewMessage(this.message)
+      this.$emit('newOwnMessage', this.message)
 
       this.message = ''
-
-      this.$emit('newOwnMessage')
     }
   }
 }
 </script>
-
-<style>
-
-</style>

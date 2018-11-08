@@ -1,8 +1,5 @@
 # basic-vue-chat
 
-## Critical npm install bug
-**Currently there are problems with Vuex when installing Chat through npm. I am working on it.**
-
 [![Build Status](https://api.travis-ci.com/jmaczan/basic-vue-chat.svg?branch=master)](https://travis-ci.com/jmaczan/basic-vue-chat)
 
 <img src="https://raw.githubusercontent.com/jmaczan/basic-vue-chat/master/preview.png" width="506" height="406" class="center">
@@ -61,7 +58,7 @@ You can find example of message pushing in `App.vue` file.
 
 ### Handling messages from user
 
-When user sends message, **it's automatically added to state - feed in general module in Vuex store** and **event newOwnMessage is emitted**.  To handle this event, you can for example do this:
+When user sends message, **the message is propagated to BasicVueChat component** and **event newOwnMessage is emitted**.  To handle this event, you can for example do this:
 ```html
 <basic-vue-chat @newOwnMessage="onNewOwnMessage" />
 ```
@@ -160,21 +157,15 @@ Chat uses SCSS, so you can easily override variables used in project. You can fi
 2. components
     - chat's components are in subdirectories of `basic-vue-chat` directory
 3. helpers
-    - reusable helpers for store and scrolling functionalities
-4. store
-    - vuex state management usage
-    - available operations defined in `actions` directory
-    - main module `general` in `modules` directory
-    - module components are in separate files
-5. App.vue - runner file
-6. main.js - project config
+    - reusable helpers for scrolling functionalities
+4. App.vue - runner file
+5. main.js - project config
 
 
 ## Technologies used
 
 1. JavaScript
     * Vue
-    * Vuex
     * Moment.js
 2. HTML5
 3. CSS

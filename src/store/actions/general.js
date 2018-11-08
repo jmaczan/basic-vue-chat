@@ -1,6 +1,0 @@
-export const MODULE = 'general'
-export const SET_FEED = 'SET_FEED'
-export const PUSH_TO_FEED = 'PUSH_TO_FEED'
-export const SET_AUTHOR_ID = 'SET_AUTHOR_ID'
-export const SET_NEW_MESSAGE = 'SET_NEW_MESSAGE'
-export const RESET_NEW_MESSAGE = 'RESET_NEW_MESSAGE'
