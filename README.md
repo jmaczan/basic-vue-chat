@@ -21,8 +21,20 @@ Implementation of Vue-based chat.
 
 ## Installation
 
+You can install the component using package managers, such as npm or yarn or install component from the repository.
 
+### npm
+```bash
+npm i basic-vue-chat
 ```
+
+### yarn
+```bash
+yarn add basic-vue-chat
+```
+
+### using repository
+```bash
 git clone https://github.com/jmaczan/basic-vue-chat.git
 cd basic-vue-chat
 npm i
@@ -34,6 +46,10 @@ Chat is a single Vue component, which you can find in `/src/components/basic-vue
 ```html
 <basic-vue-chat />
 ```
+
+## Dependencies
+
+Components uses only two dependencies - Vue (`vue` package)and Moment.js for Vue (`vue-moment`).
 
 ### Pushing messages
 
