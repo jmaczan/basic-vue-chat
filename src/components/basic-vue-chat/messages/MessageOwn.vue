@@ -31,7 +31,7 @@ export default {
     },
     contents: {
       type: String,
-      default: 'hello',
+      default: '',
       required: false
     }
   }
