@@ -65,6 +65,7 @@ Example of correct message structure:
 {
   id: 0,
   author: 'Person',
+  imageUrl: 'http://path/to/image',
   contents: 'hi there',
   date: '16:30'
 }
@@ -84,6 +85,7 @@ Example of correct event payload structure:
 ```javascript
 {
   id: 1,
+  imageUrl: 'http://path/to/image',
   contents: 'hello',
   date: '16:31'
 }
@@ -131,6 +133,7 @@ const feed = [
   {
     id: 0,
     author: 'Person',
+    imageUrl: 'http://path/to/image',
     contents: 'hi there',
     date: '16:30'
   },

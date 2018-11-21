@@ -5,6 +5,11 @@
       {{ author }}
     </div>
     <div class="message__contents">
+      <img
+        v-if="imageUrl"
+        :src="imageUrl"
+        alt=""
+        style="width: 100%" >
       {{ contents }}
     </div>
     <div class="message__date">
@@ -27,9 +32,14 @@ export default {
       default: '16:30:00',
       required: false
     },
+    imageUrl: {
+      type: String,
+      default: '',
+      required: false
+    },
     contents: {
       type: String,
-      default: 'hello',
+      default: '',
       required: false
     }
   }

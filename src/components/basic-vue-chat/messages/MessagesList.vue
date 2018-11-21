@@ -9,11 +9,13 @@
       <message-own
         v-if="message.id === authorId"
         :date="message.date"
+        :image-url="message.imageUrl"
         :contents="message.contents" />
       <message-foreign
         v-else
         :author="message.author"
         :date="message.date"
+        :image-url="message.imageUrl"
         :contents="message.contents" />
     </div>
   </transition-group>
