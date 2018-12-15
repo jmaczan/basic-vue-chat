@@ -40,16 +40,16 @@ cd basic-vue-chat
 npm i
 ```
 
+## Dependencies
+
+Components uses Vue (`vue` package), Fontawesome and Moment.js for Vue (`vue-moment`).
+
 ## Usage
 
 Chat is a single Vue component, which you can find in `/src/components/basic-vue-chat/`. To start, just import BasicVueChat component and put the following line into your html code:
 ```html
 <basic-vue-chat />
 ```
-
-## Dependencies
-
-Components uses only two dependencies - Vue (`vue` package)and Moment.js for Vue (`vue-moment`).
 
 ### Pushing messages
 
@@ -66,6 +66,7 @@ Example of correct message structure:
   id: 0,
   author: 'Person',
   imageUrl: 'http://path/to/image',
+  image: '',
   contents: 'hi there',
   date: '16:30'
 }
@@ -86,10 +87,17 @@ Example of correct event payload structure:
 {
   id: 1,
   imageUrl: 'http://path/to/image',
+  image: File(),
   contents: 'hello',
   date: '16:31'
 }
 ```
+
+### Images
+
+You can upload and receive images. To attach image, use paperclip button. Image will be emitted in message on `image` (as `File` object) and `imageUrl` (path `string`) properties.
+
+### Commands
 
 To start development, you can use hot reload mode:
 ```
@@ -105,8 +113,6 @@ To run tests:
 ```
 npm test
 ```
-
-For demo purposes, there's a `Push message` button, which pushes another person's mock message to chat.
 
 ### Mock data
 

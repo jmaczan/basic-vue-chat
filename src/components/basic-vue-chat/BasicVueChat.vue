@@ -97,10 +97,12 @@ export default {
     pushToFeed (element) {
       this.feed.push(element)
     },
-    onNewOwnMessage (message) {
+    onNewOwnMessage (message, image, imageUrl) {
       const newOwnMessage = {
         id: this.authorId,
         contents: message,
+        image: image,
+        imageUrl: imageUrl,
         date: moment().format('H:m:s')
       }
 

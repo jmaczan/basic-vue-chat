@@ -1,6 +1,6 @@
 {
   "name": "basic-vue-chat",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "main": "dist/basic-vue-chat.umd.js",
   "module": "dist/basic-vue-chat.esm.js",
   "unpkg": "dist/basic-vue-chat.min.js",
@@ -22,6 +22,11 @@
     "test:e2e": "vue-cli-service test:e2e"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.10",
+    "@fortawesome/free-solid-svg-icons": "^5.6.1",
+    "@fortawesome/vue-fontawesome": "^0.1.3",
+    "i": "^0.3.6",
+    "npm": "^6.5.0",
     "vue": "^2.5.17",
     "vue-moment": "^4.0.0"
   },
