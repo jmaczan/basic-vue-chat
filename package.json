@@ -1,6 +1,6 @@
 {
   "name": "basic-vue-chat",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "main": "dist/basic-vue-chat.umd.js",
   "module": "dist/basic-vue-chat.esm.js",
   "unpkg": "dist/basic-vue-chat.min.js",
