@@ -3,8 +3,8 @@
     name="messages-list"
     tag="div">
     <div
-      v-for="message in feed"
-      :key="messageKey(message)"
+      v-for="(message, index) in feed"
+      :key="messageKey(message, index)"
       class="messages-list-item">
       <message-own
         v-if="message.id === authorId"
@@ -46,8 +46,8 @@ export default {
     }
   },
   methods: {
-    messageKey (message) {
-      return message.contents + message.date
+    messageKey (message, index) {
+      return message.contents + message.date + index
     }
   }
 }

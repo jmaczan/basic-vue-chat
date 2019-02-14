@@ -103,7 +103,7 @@ export default {
         contents: message,
         image: image,
         imageUrl: imageUrl,
-        date: moment().format('H:m:s')
+        date: moment().format('HH:mm:ss')
       }
 
       this.pushToFeed(newOwnMessage)

@@ -120,6 +120,17 @@ To attach mock data, just pass logic prop `attachMock` to BasicVueChat.
 
 ## Customization
 
+### Styles
+Styles are imported in main `BasicVueChat` component and variables have `!default` values, so it means that you can override default values by defining your own variables before styles import.
+
+```scss
+<style lang="scss">
+$primary: red;
+// above the following import you can override default values of variables like $primary 
+@import "../../assets/scss/main.scss";
+</style>
+```
+
 ### Title
 
 Pass prop `title` to BasicVueChat component.
