@@ -1,5 +1,7 @@
 <template>
-  <div class="basic-vue-chat">
+  <div 
+    @click="closeModals"
+    class="basic-vue-chat">
     <section class="window">
       <header class="window__header__container">
         <slot name="header">
@@ -18,7 +20,9 @@
       </section>
       <div class="window__input__container">
         <slot name="input-container">
-          <input-container @newOwnMessage="onNewOwnMessage" />
+          <input-container 
+          @newOwnMessage="onNewOwnMessage"
+          :closeEmojiPicker="closeEmojiPicker" />
         </slot>
       </div>
     </section>
@@ -71,7 +75,8 @@ export default {
   data: function () {
     return {
       feed: [],
-      authorId: 0
+      authorId: 0,
+      closeEmojiPicker: false
     }
   },
   watch: {
@@ -94,6 +99,9 @@ export default {
     }
   },
   methods: {
+    closeModals () {
+      this.closeEmojiPicker = true
+    },
     pushToFeed (element) {
       this.feed.push(element)
     },

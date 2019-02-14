@@ -56,6 +56,16 @@
           cursor: pointer;
         }
 
+        &-emoji-picker {
+
+          &__container {
+            position: absolute;
+            bottom: 30px;
+            right: 5px;
+            z-index: 3;
+          }
+        }
+
         &__field {
           @include just-flex;
           flex-grow: 9999;

@@ -16,8 +16,13 @@
 </template>
 
 <script>
+import { Emoji } from 'emoji-mart-vue'
+
 export default {
   name: 'MessageOwn',
+  components: {
+    Emoji
+  },
   props: {
     date: {
       type: String,

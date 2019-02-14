@@ -11,71 +11,122 @@
     </slot>
     <div class="features__container">
       <div class="input-images-upload">
-        <input
+        <div
           id="image"
           ref="image"
           type="file"
           class="image"
           accept="image/*"
           @change="handleFileUpload()">
-        <label for="image">
-          <font-awesome-icon icon="paperclip" />
-        </label>
+          <label for="image">
+            <font-awesome-icon icon="paperclip" />
+          </label>
+        </div>
+      </div>
+      <div class="input-images-upload input-emoji-picker__icon">
+        <div
+          id="emoji"
+          @click="openEmojiPicker()">
+          <label for="emoji">
+            <font-awesome-icon icon="smile" />
+          </label>
+        </div>
+      </div>
+      <div
+        :class="{ visible: !toggleEmojiPicker }"
+        class="input-emoji-picker__container">
+        <picker
+          @select="emojiPicked"
+          :show-preview="false"
+          :show-skin-tones="false"
+          :show-categories="false"
+          :show-search="false"
+          native />
       </div>
       <slot name="features" />
     </div>
     <slot name="input-button">
       <input-button @newOwnMessage="onNewOwnMessage" />
     </slot>
-
   </div>
 </template>
 
 <script>
-import InputField from './InputField.vue'
-import InputButton from './InputButton.vue'
+import InputField from "./InputField.vue";
+import InputButton from "./InputButton.vue";
+import { Picker } from "emoji-mart-vue";
 
 export default {
-  name: 'InputContainer',
+  name: "InputContainer",
   components: {
     InputField,
-    InputButton
+    InputButton,
+    Picker
   },
-  data: function () {
+  props: {
+    closeEmojiPicker: {
+      type: Boolean,
+      default: false,
+      required: false
+    }
+  },
+  data: function() {
     return {
-      message: '',
+      message: "",
       file: undefined,
-      imagePreview: ''
+      imagePreview: "",
+      toggleEmojiPicker: false
+    };
+  },
+  watch: {
+    closeEmojiPicker: function() {
+      this.toggleEmojiPicker = false
     }
   },
   methods: {
-    onNewOwnMessage () {
-      if ((!this.message || this.message === '') && !this.file) {
-        return
+    onNewOwnMessage() {
+      if ((!this.message || this.message === "") && !this.file) {
+        return;
       }
 
-      this.$emit('newOwnMessage', this.message, this.file, this.imagePreview)
+      this.$emit("newOwnMessage", this.message, this.file, this.imagePreview);
 
-      this.message = ''
+      this.message = "";
 
-      this.file = undefined
+      this.file = undefined;
 
-      this.imagePreview = ''
+      this.imagePreview = "";
     },
-    handleFileUpload () {
-      this.file = this.$refs.image.files[0]
-      let reader = new FileReader()
+    handleFileUpload() {
+      this.file = this.$refs.image.files[0];
+      let reader = new FileReader();
 
-      reader.addEventListener('load', function () {
-        this.imagePreview = reader.result
-      }.bind(this), false)
+      reader.addEventListener(
+        "load",
+        function() {
+          this.imagePreview = reader.result;
+        }.bind(this),
+        false
+      );
 
       if (this.file) {
         if (/\.(jpe?g|png|gif)$/i.test(this.file.name)) {
-          reader.readAsDataURL(this.file)
+          reader.readAsDataURL(this.file);
         }
       }
+    },
+    openEmojiPicker() {
+      this.toggleEmojiPicker = !this.toggleEmojiPicker;
+    },
+    emojiPicked(emoji) {
+      this.message += emoji.native;
     }
   }
-}
+};
 </script>
+
+<style lang="scss" scoped>
+.visible {
+  display: none;
+}
+</style>
