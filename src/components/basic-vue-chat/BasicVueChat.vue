@@ -1,7 +1,7 @@
 <template>
-  <div 
-    @click="closeModals"
-    class="basic-vue-chat">
+  <div
+    class="basic-vue-chat"
+    @click="setEmojiPickerToggle(false)">
     <section class="window">
       <header class="window__header__container">
         <slot name="header">
@@ -20,9 +20,11 @@
       </section>
       <div class="window__input__container">
         <slot name="input-container">
-          <input-container 
-          @newOwnMessage="onNewOwnMessage"
-          :closeEmojiPicker="closeEmojiPicker" />
+          <input-container
+            :toggle-emoji-picker="toggleEmojiPicker"
+            @newOwnMessage="onNewOwnMessage"
+            @openEmojiPicker="onOpenEmojiPicker"
+          />
         </slot>
       </div>
     </section>
@@ -76,7 +78,7 @@ export default {
     return {
       feed: [],
       authorId: 0,
-      closeEmojiPicker: false
+      toggleEmojiPicker: false
     }
   },
   watch: {
@@ -87,20 +89,22 @@ export default {
   },
   mounted () {
     if (this.attachMock) {
-      import('./mocks/mock-messages-list.js').then(mockData => {
-        this.feed = mockData.default.feed
-        this.setAuthorId(mockData.default.authorId)
-      }).catch(error => {
-        console.error('Failed to load mock data from file. ', error)
-      })
+      import('./mocks/mock-messages-list.js')
+        .then(mockData => {
+          this.feed = mockData.default.feed
+          this.setAuthorId(mockData.default.authorId)
+        })
+        .catch(error => {
+          console.error('Failed to load mock data from file. ', error)
+        })
     } else {
       this.feed = this.initialFeed
       this.authorId = this.initialAuthorId
     }
   },
   methods: {
-    closeModals () {
-      this.closeEmojiPicker = true
+    setEmojiPickerToggle (toggle) {
+      this.toggleEmojiPicker = toggle
     },
     pushToFeed (element) {
       this.feed.push(element)
@@ -119,9 +123,11 @@ export default {
       scrollToBottom()
 
       this.$emit('newOwnMessage', message)
+    },
+    onOpenEmojiPicker (toggle) {
+      this.setEmojiPickerToggle(toggle)
     }
   }
-
 }
 </script>
 
