@@ -156,20 +156,22 @@ Example of correct data structure:
 ```javascript
 const feed = [
   {
-    id: 0,
+    id: 1,
     author: 'Person',
     imageUrl: 'http://path/to/image',
     contents: 'hi there',
     date: '16:30'
   },
   {
-    id: 1,
+    id: 0,
     author: 'Me',
     contents: 'hello',
     date: '16:30'
   }
 ]
 ```
+
+Pass prop `initialAuthorId` to BasicVueChat component to define current user's ID. Default value is `0`.
 
 ### Styling
 
