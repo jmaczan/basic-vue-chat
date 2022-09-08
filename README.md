@@ -1,6 +1,7 @@
+<p align="center"><img width="150" src="basic-vue-chat.png" alt="basic-vue-chat logo"></p>
+
 # basic-vue-chat
 
-[![Build Status](https://api.travis-ci.com/jmaczan/basic-vue-chat.svg?branch=master)](https://travis-ci.com/jmaczan/basic-vue-chat)
 [![Version](https://img.shields.io/npm/v/basic-vue-chat.svg)](https://www.npmjs.com/package/basic-vue-chat)
 
 <img src="https://raw.githubusercontent.com/jmaczan/basic-vue-chat/master/preview.png" width="506" height="406" class="center">
